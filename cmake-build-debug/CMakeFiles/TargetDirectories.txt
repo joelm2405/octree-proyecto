@@ -1,3 +1,0 @@
-C:/Users/ASUS/Desktop/octree-proyecto/cmake-build-debug/CMakeFiles/octree_proyecto.dir
-C:/Users/ASUS/Desktop/octree-proyecto/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/ASUS/Desktop/octree-proyecto/cmake-build-debug/CMakeFiles/rebuild_cache.dir

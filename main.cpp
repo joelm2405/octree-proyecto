@@ -9,15 +9,11 @@ int main() {
 
     // Insertar puntos
     octree.insert(1.0f, 1.0f, 1.0f);
-    octree.insert(2.0f, 2.0f, 2.0f);
-    octree.insert(4.0f, 4.0f, 4.0f);
     octree.insert(5.0f, 5.0f, 5.0f);
-    octree.insert(6.0f, 6.0f, 6.0f);
-    octree.insert(7.0f, 7.0f, 7.0f);
-    octree.insert(9.0f, 9.0f, 9.0f);
+    octree.insert(8.0f, 8.0f, 8.0f);
+    octree.insert(3.0f, 3.0f, 3.0f);
     octree.insert(10.0f, 10.0f, 10.0f);
-
-
+    octree.insert(10.0f, 10.0f, 10.0f);
 
     // Buscar puntos
     cout << "Buscar (1.0f, 1.0f, 1.0f): " << octree.find(1.0f, 1.0f, 1.0f) << endl;
