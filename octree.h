@@ -19,7 +19,7 @@ struct Point {
     T z;
     
     Point() : x(-1), y(-1), z(-1) {}
-    
+
     Point(T a, T b, T c) : x(a), y(b), z(c) {}
 };
 
@@ -41,7 +41,6 @@ public:
     }
 
     int getOctant(T x, T y, T z, T midx, T midy, T midz) {
-      
         if (x <= midx) {
             if (y <= midy) {
                 if (z <= midz)
@@ -73,11 +72,11 @@ public:
         if (x2 < x1 || y2 < y1 || z2 < z1) {
             throw invalid_argument("Invalid dimensions");
         }
-        
+
         point = nullptr;
         topLeftFront = new Point<T>(x1, y1, z1);
         bottomRightBack = new Point<T>(x2, y2, z2);
-        
+
         children.assign(8, nullptr);
         for (int i = TopLeftFront; i <= BottomLeftBack; ++i) {
             children[i] = new Octree<T>();
@@ -166,12 +165,12 @@ public:
         }
         return false;
     }
-      
+
     Point<T>* getPoint(T x, T y, T z) {
     if (x < topLeftFront->x || x > bottomRightBack->x ||
         y < topLeftFront->y || y > bottomRightBack->y ||
         z < topLeftFront->z || z > bottomRightBack->z) {
-        return nullptr; 
+        return nullptr;
     }
 
     T midx = (topLeftFront->x + bottomRightBack->x) / 2;
@@ -182,15 +181,15 @@ public:
 
     if (children[index]->point != nullptr) {
         if (children[index]->point->x == x && children[index]->point->y == y && children[index]->point->z == z) {
-            return children[index]->point;  
+            return children[index]->point;
         }
     }
 
     if (children[index]->children[0] != nullptr) {
-        return children[index]->getPoint(x, y, z);  
+        return children[index]->getPoint(x, y, z);
     }
 
-    return nullptr; 
+    return nullptr;
 }
 
 
@@ -202,7 +201,7 @@ public:
     if (x < topLeftFront->x || x > bottomRightBack->x ||
         y < topLeftFront->y || y > bottomRightBack->y ||
         z < topLeftFront->z || z > bottomRightBack->z) {
-        return; 
+        return;
     }
 
     T midx = (topLeftFront->x + bottomRightBack->x) / 2;
@@ -210,12 +209,12 @@ public:
     T midz = (topLeftFront->z + bottomRightBack->z) / 2;
 
     int index = getOctant(x, y, z, midx, midy, midz);
-                totalPoints--;  
+                totalPoints--;
 
     if (children[index] != nullptr) {
-        if (children[index]->point != nullptr && 
-            children[index]->point->x == x && 
-            children[index]->point->y == y && 
+        if (children[index]->point != nullptr &&
+            children[index]->point->x == x &&
+            children[index]->point->y == y &&
             children[index]->point->z == z) {
             children[index]->point = nullptr;
             return;
@@ -224,13 +223,13 @@ public:
         children[index]->remove(x, y, z);
 
         if (children[index]->isLeaf()) {
-            children[index] = nullptr;  
+            children[index] = nullptr;
         }
     }
 }
 bool isLeaf() {
     if (point != nullptr) {
-        return true;  
+        return true;
     }
 
     bool allChildrenEmpty = true;
